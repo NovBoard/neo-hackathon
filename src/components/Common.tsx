@@ -16,6 +16,14 @@ const Input = (props: any) => {
   return <input {...props} />;
 };
 
+const Select = (props: any) => {
+  return <select {...props} />;
+}
+
+const Option = (props: any) => {
+  return <option {...props} />;
+}
+
 // A custom hook that returns true if the window width is less than the breakpoint
 const useIsMobile = (breakpoint: number) => {
   // Define the initial value based on the window width
@@ -48,4 +56,4 @@ const useIsMobile = (breakpoint: number) => {
 };
 
 
-export { Div, Span, Img, Input, useIsMobile }
+export { Div, Span, Img, Input, Select, Option, useIsMobile }
