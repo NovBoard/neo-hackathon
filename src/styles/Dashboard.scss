@@ -1,0 +1,302 @@
+.asset-summary {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 40vh;
+    justify-content: space-evenly;
+
+    .bar-chart {
+        width: 90%;
+    }
+
+    .total-assets {
+        display: flex;
+        width: 90%;
+
+        .asset-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1; // width를 1:1:1의 비율로 차지하도록 함
+        }
+
+        .asset-label {
+            font-weight: 600;
+            color: #ffffff74;
+        }
+
+        .asset-value {
+            font-weight: 600;
+            color: white;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .asset-summary{
+        height: 70vh;
+
+        .total-assets{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+}
+
+.total-worth {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 90%;
+
+    .total-worth-title {
+        // font-size: 1.5rem;
+        font-weight: 600;
+        color: #ffffff74;
+    }
+
+    .total-worth-value {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .total-worth-amount {
+        font-size: 2rem;
+        font-weight: 600;
+        color: white;
+    }
+
+    .total-worth-change {
+        color: #3C89E8;
+        border-radius: 4px;
+        width: 5vw;
+        height: 3vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px dashed var(--color-border, #424242);
+        min-width: max-content;
+    }
+}
+
+@media (max-width: 768px) {
+    .total-worth{
+        position: relative;
+        padding-top: 10vh;
+        height: 20vh;
+        justify-content: center;
+
+        .total-worth-amount{
+            font-size: 1.5rem;
+        }
+
+        .total-worth-change{
+            width: 20vw;
+            height: 3.5vh;
+        }
+    }
+}
+
+.asset-change {
+    width: 90%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .line-chart {
+        max-height: 30vh;
+        min-height: 30vh;
+    }
+
+    .asset-change-text {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .asset-change-title {
+            font-weight: 600;
+            color: #ffffff74;
+        }
+
+        .asset-change-value {
+            font-weight: 600;
+            color: #3C89E8;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .asset-change{
+        padding-top: 10vh;
+    }
+}
+
+.asset-allocation {
+    max-height: 40vh;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+
+    .stacked-doughnut-chart {
+        min-height: 30vh;
+        max-height: 30vh;
+    }
+
+    .asset-allocation-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 47.5%;
+
+        .asset-allocation-title {
+            font-weight: 600;
+            color: #ffffff74;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .asset-allocation {
+        padding-top: 10vh;
+
+        .stacked-doughnut-chart {
+            width: 200%;
+        }
+
+        .asset-allocation-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width: 50%;
+            align-items: flex-start;
+        }
+
+        .carousel-root{
+            width: 100%;
+        }
+    }
+}
+
+.asset-scroll-view {
+    width: 90%;
+    padding-top: 10vh;
+    // padding-bottom: 10vh;
+
+    .asset-scroll {
+        width: 100%;
+        min-height: 40vh;
+        max-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .asset-scroll-title {
+            font-weight: 600;
+            color: #ffffff74;
+        }
+
+        .asset-scroll-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            min-height: 30vh;
+            max-height: 30vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color: #141414;
+            // padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .asset-scroll-item {
+            display: flex;
+            min-height: 8vh;
+            max-height: 8vh;
+            background-color: #ffffff40;
+        }
+
+        .asset-scroll-field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .asset-scroll-text {
+            color: white;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .asset-scroll-view {
+        position: relative;
+        padding-top: 0vh;
+        padding-bottom: 15vh;
+
+        .asset-scroll{
+            max-height: 100%;
+            min-height: 100%;
+            padding-top: 5vh;
+
+            .asset-scroll-title-mobile{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .asset-scroll-items{
+                gap: 0rem;
+                background-color: #000000;
+                overflow: visible;
+                min-height: 100%;
+                max-height: 100%;
+                padding-top: 1rem;
+            }
+
+            .asset-scroll-item{
+                background-color: #000000;
+                border-bottom: 1px #424242;
+                border-style: solid;
+            }
+
+            .asset-scroll-text{
+                font-size: 0.75rem;
+            }
+
+            .field-raw{
+                display: flex;
+                width: 100%;
+                background-color: #424242;
+                height: 5vh;
+            }
+
+            .field-raw-token, .field-raw-amount, .field-raw-value{
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-weight: 600;
+            }
+
+            .field-raw-value{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+
+            .field-raw-toggle{
+                display: flex;
+            }
+        }
+    }
+}

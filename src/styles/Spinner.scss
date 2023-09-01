@@ -1,0 +1,16 @@
+.spinner {
+    width: 100%;
+    top: 0;
+    height: 100%;
+    display: flex;
+    left: 0;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .spinner {
+        background-color: rgba(0,0,0);
+    }
+}
