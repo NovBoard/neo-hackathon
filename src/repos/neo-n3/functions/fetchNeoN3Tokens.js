@@ -16,12 +16,12 @@ const fetchNeoN3Tokens = async (walletAddress) => {
     const result = tokens.map(token => {
         const amount = token.amount;
         const price = prices.find(price => price.hash === token.assethash);
-        const usdPrice = price.usd_price;
+        const usdPrice = price ? price.usd_price : 0;
 
         return {
             address: token.assethash,
             price: usdPrice,
-            amount: Number(amount),
+            amount: Number(amount) / Math.pow(10, Number(token.decimals)),
             symbol: token.symbol.toUpperCase(),
             dex: "NeoN3",
             value: amount * usdPrice,

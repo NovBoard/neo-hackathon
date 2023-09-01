@@ -9,7 +9,7 @@ import { MobileHeader } from '../components/MobileHeader';
 import { MobileNavigator } from '../components/MobileNavigator';
 import { useLocation } from 'react-router-dom';
 import userAPI from '../api/userAPI';
-import { getUserData } from '../repos/mainnet';
+import { getUserData } from '../repos/balance.js';
 import { calculateTotalValue, processDexData, processTokenData } from '../functions/Utils';
 import { recommendAllPools } from '../repos/recommendations/protocols/ethereum/index.js';
 import { getExchangeRate } from '../functions/GetExchangeRate';

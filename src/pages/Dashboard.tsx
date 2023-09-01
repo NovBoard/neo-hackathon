@@ -10,7 +10,7 @@ import { MobileHeader } from '../components/MobileHeader';
 import { MobileNavigator } from '../components/MobileNavigator';
 import { useLocation } from 'react-router-dom';
 import userAPI from '../api/userAPI';
-import { getUserData } from '../repos/mainnet';
+import { getUserData } from '../repos/balance.js';
 import { processTokenData, processDexData, calculateTotalValue } from '../functions/Utils';
 import { getExchangeRate } from '../functions/GetExchangeRate';
 import { Spinner } from '../components/Spinner';

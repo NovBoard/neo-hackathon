@@ -1,6 +1,6 @@
 // 모듈 임포트
 import axios from 'axios';
-import { getLpPools } from '../../functions/getUsersBalances.js';
+// import { getLpPools } from '../../functions/getUsersBalances.js';
 
 const walletAddress = "0xba12222222228d8ba445958a75a0704d566bf2c8"
 

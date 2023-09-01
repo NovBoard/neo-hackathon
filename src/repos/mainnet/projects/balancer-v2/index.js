@@ -1,5 +1,5 @@
 // 모듈 임포트
-import { getLpPools } from '../../functions/getUsersBalances.js';
+// import { getLpPools } from '../../functions/getUsersBalances.js';
 import { request, gql } from 'graphql-request';
 import { getPriorBlock } from '../../functions/getPriorBlock.js';
 import { Web3 } from "web3";

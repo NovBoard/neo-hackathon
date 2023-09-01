@@ -1,5 +1,5 @@
 // 모듈 임포트
-import { getLpPools } from '../../functions/getUsersBalances.js';
+// import { getLpPools } from '../../functions/getUsersBalances.js';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { getPriorBlock } from '../../functions/getPriorBlock.js';
 

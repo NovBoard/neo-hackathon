@@ -4,7 +4,7 @@ import { getUsersBalances } from "./functions/getUsersBalances.js";
 import { getPoolInfo } from "./functions/getPoolInfo.js";
 import { getWalletSpecificPools } from "./functions/getWalletSpecificPools.js";
 
-const getUserData = async (walletAddresses) => {
+const getMainnetUserData = async (walletAddresses) => {
     const commonData = await getAllPools();
     const commonTokens = commonData.map(token => ({ ...token }));
 
@@ -71,4 +71,4 @@ const getUserData = async (walletAddresses) => {
     };
 }
 
-export { getUserData };
+export { getMainnetUserData };

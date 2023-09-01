@@ -2,19 +2,46 @@ import axios from "axios";
 import { fetchNeoN3Tokens } from "../../functions/fetchNeoN3Tokens.js";
 
 const fetchFlamingoPools = async (walletAddress) => {
-    const tokens = await fetchNeoN3Tokens(walletAddress);
-    const tokenAddresses = tokens.map(token => token.address);
-    const poolResponse = await axios("https://api.flamingo.finance/project-info/defillama-yields");
-    const pools = poolResponse.data.pools;
-    tokenAddresses.push("0xa9603a59e21d29e37ac39cf1b5f5abf5006b22a3");
+    let totalTokens = await fetchNeoN3Tokens(walletAddress);
+    const tokenAddresses = totalTokens.map(token => {
+        if (token.price !== 0) return null;
+        return token.address;
+    }).filter(token => token !== null);
 
-    console.log(pools);
-    
-    const result = pools.find(pool => {
+    const poolResponse = await axios("https://api.flamingo.finance/project-info/defillama-yields");
+    const poolData = poolResponse.data.pools;
+    const userPools = poolData.filter(pool => {
         return tokenAddresses.includes(pool.pool.toString())
     });
 
-    console.log(result);
+    totalTokens = totalTokens.map(token => {
+        if (token.price !== 0) {
+            return token;
+        } else {
+            return null;
+        }
+    }).filter(token => token !== null);
+
+    const totalPools = userPools.map(pool => {
+        const symbols = pool.symbol.split("-");
+        const dex = "Flamingo Finance";
+        const amounts = [Math.random() * 1000, Math.random() * 1000];
+        const value = Math.random() * 1000;
+
+        return {
+            symbols,
+            dex,
+            amounts,
+            value
+        }
+    });
+
+    return {
+        totalTokens,
+        totalPools,
+    }
 }
 
-fetchFlamingoPools("NdUL5oDPD159KeFpD5A9zw5xNF1xLX6nLT");
+export { fetchFlamingoPools };
+
+// fetchFlamingoPools("NUyjyXW1VYKHJfaxgGRKrMYUwGWPuAeDRC");
