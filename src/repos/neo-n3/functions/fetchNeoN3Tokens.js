@@ -24,7 +24,7 @@ const fetchNeoN3Tokens = async (walletAddress) => {
             amount: Number(amount) / Math.pow(10, Number(token.decimals)),
             symbol: token.symbol.toUpperCase(),
             dex: "NeoN3",
-            value: amount * usdPrice,
+            value: Number(amount) / Math.pow(10, Number(token.decimals)) * usdPrice,
         }
     });
 

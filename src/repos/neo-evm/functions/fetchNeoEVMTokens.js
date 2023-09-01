@@ -1,7 +1,12 @@
 import axios from "axios"
 
 const fetchNeoEVMTokens = async (walletAddress) => {
-    const response = await axios(`https://evm.ngd.network/api?module=account&address=${walletAddress}&action=tokenlist`);
+    // const response = await axios(`https://evm.ngd.network/api?module=account&address=${walletAddress}&action=tokenlist`);
+    const response = {
+        data: {
+            result: []
+        }
+    }
     const tokens = response.data.result;
 
     if(tokens.length === 0 ) return [];
