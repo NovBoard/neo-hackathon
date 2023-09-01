@@ -1,0 +1,73 @@
+diff --git a/node_modules/web3-core/lib/commonjs/web3_batch_request.d.ts b/node_modules/web3-core/lib/commonjs/web3_batch_request.d.ts
+index 79993a6..637a57f 100644
+--- a/node_modules/web3-core/lib/commonjs/web3_batch_request.d.ts
++++ b/node_modules/web3-core/lib/commonjs/web3_batch_request.d.ts
+@@ -1,7 +1,7 @@
+ import { JsonRpcBatchResponse, JsonRpcOptionalRequest, JsonRpcRequest } from 'web3-types';
+ import { Web3DeferredPromise } from 'web3-utils';
+ import { Web3RequestManager } from './web3_request_manager.js';
+-export declare const DEFAULT_BATCH_REQUEST_TIMEOUT = 1000;
++export declare const DEFAULT_BATCH_REQUEST_TIMEOUT = 30000;
+ export declare class Web3BatchRequest {
+     private readonly _requestManager;
+     private readonly _requests;
+diff --git a/node_modules/web3-core/lib/commonjs/web3_batch_request.js b/node_modules/web3-core/lib/commonjs/web3_batch_request.js
+index f7edf2d..58288b8 100644
+--- a/node_modules/web3-core/lib/commonjs/web3_batch_request.js
++++ b/node_modules/web3-core/lib/commonjs/web3_batch_request.js
+@@ -28,7 +28,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.Web3BatchRequest = exports.DEFAULT_BATCH_REQUEST_TIMEOUT = void 0;
+ const web3_utils_1 = require("web3-utils");
+ const web3_errors_1 = require("web3-errors");
+-exports.DEFAULT_BATCH_REQUEST_TIMEOUT = 1000;
++exports.DEFAULT_BATCH_REQUEST_TIMEOUT = 30000;
+ class Web3BatchRequest {
+     constructor(requestManager) {
+         this._requestManager = requestManager;
+diff --git a/node_modules/web3-core/lib/esm/web3_batch_request.js b/node_modules/web3-core/lib/esm/web3_batch_request.js
+index 42d990f..8a6e34c 100644
+--- a/node_modules/web3-core/lib/esm/web3_batch_request.js
++++ b/node_modules/web3-core/lib/esm/web3_batch_request.js
+@@ -25,7 +25,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ import { jsonRpc, Web3DeferredPromise } from 'web3-utils';
+ import { OperationAbortError, OperationTimeoutError, ResponseError } from 'web3-errors';
+-export const DEFAULT_BATCH_REQUEST_TIMEOUT = 1000;
++export const DEFAULT_BATCH_REQUEST_TIMEOUT = 30000;
+ export class Web3BatchRequest {
+     constructor(requestManager) {
+         this._requestManager = requestManager;
+diff --git a/node_modules/web3-core/src/web3_batch_request.ts b/node_modules/web3-core/src/web3_batch_request.ts
+index c232a4e..d225b9c 100644
+--- a/node_modules/web3-core/src/web3_batch_request.ts
++++ b/node_modules/web3-core/src/web3_batch_request.ts
+@@ -20,15 +20,17 @@ import { jsonRpc, Web3DeferredPromise } from 'web3-utils';
+ import { OperationAbortError, OperationTimeoutError, ResponseError } from 'web3-errors';
+ import { Web3RequestManager } from './web3_request_manager.js';
+ 
+-export const DEFAULT_BATCH_REQUEST_TIMEOUT = 1000;
++export const DEFAULT_BATCH_REQUEST_TIMEOUT = 30000;
+ 
+ export class Web3BatchRequest {
+-	private readonly _requestManager: Web3RequestManager;
+-	private readonly _requests: Map<
++	private _requestManager: Web3RequestManager;
++	private _requests: Map<
+ 		number,
+ 		{ payload: JsonRpcRequest; promise: Web3DeferredPromise<unknown> }
+ 	>;
+ 
++	public timeout: number = DEFAULT_BATCH_REQUEST_TIMEOUT;
++
+ 	public constructor(requestManager: Web3RequestManager) {
+ 		this._requestManager = requestManager;
+ 		this._requests = new Map();
+@@ -49,6 +51,8 @@ export class Web3BatchRequest {
+ 
+ 	// eslint-disable-next-line class-methods-use-this
+ 	public async execute(): Promise<JsonRpcBatchResponse<unknown, unknown>> {
++		console.log('execute');
++
+ 		if (this.requests.length === 0) {
+ 			return Promise.resolve([]);
+ 		}

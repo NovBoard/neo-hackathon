@@ -1,0 +1,80 @@
+.pool-recommendation{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    width: 90%;
+    justify-content: space-evenly;
+
+    .pool-recommendation-title {
+        font-weight: 600;
+        color: #ffffff74;
+    }
+    
+    .pool-recommendation-text{
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    
+    .pool-recommendation-button{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .pool-recommendation-button-item {
+        font-size: 0.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        max-width: 50%;
+        height: 5vh;
+        cursor: pointer; 
+        transition: all 0.3s ease;
+    }
+    
+    .pool-recommendation-button-item.selected {
+        background-color: #1668DC;
+        color: white;
+    }
+    
+    .pool-recommendation-button-item.unselected{
+        // background-color: red;
+        color: #FFFFFFA6;
+    }
+    
+    .pool-items{
+        display: flex;
+        flex-direction: column;
+        /* gap: 1rem; */
+        height: 70%;
+        justify-content: space-around;
+    }
+    
+    .pool-item{
+        display: flex;
+        height: 10vh;
+        background-color: #FFFFFF14;
+    }
+
+    .pool-field{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    .pool-field, .pool-field-item{
+        color: white;
+    }
+}
+
+@media (max-width: 768px) {
+    .pool-recommendation{
+        padding-bottom: 15vh;
+
+        .pool-item{
+            font-size: 0.75rem;
+        }
+    }
+}
