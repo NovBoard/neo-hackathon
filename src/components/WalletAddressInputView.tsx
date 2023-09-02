@@ -180,7 +180,7 @@ const WalletAddressInputView = ({ wallets }: { wallets: string[] }) => {
                 </Div>
             </Div>
             <Div className="wallet-address-input-item">
-                <Div className="wallet-address-input-header-title">이더리움(ETH) 지갑 주소</Div>
+                <Div className="wallet-address-input-header-title">지갑 주소</Div>
                 <Div className="wallet-address-items">
                     {walletAddresses.map((item: any, index: number) => (
                         <WalletAddressItem key={index} network={item.network} address={item.address} onDelete={deleteAddress} />
